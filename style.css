@@ -1,0 +1,304 @@
+/* ---------- Base ---------- */
+:root {
+  --ink: #12302f;
+  --ink-soft: #4b6362;
+  --bg: #f4f7f6;
+  --surface: #ffffff;
+  --line: #d9e3e1;
+  --brand: #0f5f5c;
+  --brand-dark: #0a4341;
+  --accent: #f2a900;
+  --radius: 10px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--brand);
+}
+
+.site-header nav {
+  display: flex;
+  gap: 24px;
+}
+
+.site-header nav a {
+  font-weight: 500;
+  color: var(--ink-soft);
+  padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+
+.site-header nav a:hover {
+  color: var(--brand);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--brand);
+  color: #fff;
+  text-align: center;
+  padding: 72px 24px 80px;
+}
+
+.hero h1 {
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1.15;
+  max-width: 16ch;
+  margin: 0 auto 12px;
+}
+
+.hero p {
+  color: #cfe6e4;
+  margin-bottom: 28px;
+}
+
+.search-form {
+  display: flex;
+  max-width: 560px;
+  margin: 0 auto;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 6px;
+}
+
+.search-form input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 12px 14px;
+  font-size: 1rem;
+  color: var(--ink);
+  min-width: 0;
+}
+
+.search-form input:focus {
+  outline: none;
+}
+
+.search-form button {
+  border: none;
+  background: var(--accent);
+  color: var(--ink);
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0 24px;
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.search-form button:hover {
+  background: #ffbb1f;
+}
+
+/* ---------- Products section ---------- */
+.products {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.products h2 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 20px;
+}
+
+.product-grid > p {
+  grid-column: 1 / -1;
+  color: var(--ink-soft);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 28px 16px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 600px) {
+  .site-header {
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+  .site-header nav {
+    gap: 16px;
+  }
+  .hero {
+    padding: 48px 16px 56px;
+  }
+}
+
+/* ---------- Product cards ---------- */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.15s;
+}
+
+.card:hover {
+  border-color: var(--brand);
+}
+
+.card-image {
+  position: relative;
+  height: 150px;
+  display: grid;
+  place-items: center;
+  background: #e6f0ee;
+}
+
+.card-icon {
+  font-size: 3.6rem;
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--accent);
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.card-body {
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.card-meta {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+.card-title {
+  font-size: 1.05rem;
+  margin: 2px 0 6px;
+}
+
+.card-desc {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-bottom: 8px;
+  flex: 1;
+}
+
+.card-rating {
+  font-size: 0.88rem;
+  margin-bottom: 6px;
+}
+
+.stars {
+  color: var(--accent);
+  letter-spacing: 1px;
+}
+
+.reviews {
+  color: var(--ink-soft);
+  margin-left: 4px;
+}
+
+.card-price {
+  margin-bottom: 12px;
+}
+
+.card-price strong {
+  font-size: 1.2rem;
+}
+
+.card-price s {
+  color: var(--ink-soft);
+  margin-left: 6px;
+  font-size: 0.9rem;
+}
+
+.card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  font: inherit;
+  font-weight: 600;
+  border-radius: 7px;
+  cursor: pointer;
+  padding: 9px 14px;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  flex: 1;
+  background: var(--brand);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--brand-dark);
+}
+
+.btn-ghost {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--brand);
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.btn-ghost:hover {
+  border-color: var(--brand);
+}
