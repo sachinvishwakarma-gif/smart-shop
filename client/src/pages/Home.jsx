@@ -4,11 +4,10 @@ import {
   addToCart,
   getWishlist,
   addToWishlist,
-  removeFromWishlist
+  removeFromWishlist,
 } from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import laptopImage from "../images/shopping.webp";
 
 function formatPrice(amount) {
   return "₹" + Number(amount).toLocaleString("en-IN");
@@ -109,13 +108,11 @@ export default function Home() {
 
           return (
             <article className="card" key={p._id}>
-
               <div className="card-image">
-            <img src={p.imageUrl || laptopImage} alt={p.name} />
-            </div>
+                <span className="card-icon">{p.icon}</span>
+              </div>
 
               <div className="card-body">
-
                 <div className="card-top-row">
                   <p className="card-meta">
                     {p.brand} · {p.category}
@@ -125,18 +122,14 @@ export default function Home() {
                     className={`btn-heart ${saved ? "saved" : ""}`}
                     onClick={() => handleToggleWishlist(p._id)}
                     aria-label={
-                      saved
-                        ? "Remove from wishlist"
-                        : "Add to wishlist"
+                      saved ? "Remove from wishlist" : "Add to wishlist"
                     }
                   >
                     {saved ? "♥" : "♡"}
                   </button>
                 </div>
 
-                <h3 className="card-title">
-                  {p.name}
-                </h3>
+                <h3 className="card-title">{p.name}</h3>
 
                 <p className="card-price">
                   <strong>{formatPrice(p.price)}</strong>
@@ -147,11 +140,8 @@ export default function Home() {
                   disabled={addingId === p._id}
                   onClick={() => handleAddToCart(p._id)}
                 >
-                  {addingId === p._id
-                    ? "Adding..."
-                    : "Add to cart"}
+                  {addingId === p._id ? "Adding..." : "Add to cart"}
                 </button>
-
               </div>
             </article>
           );
