@@ -10,12 +10,14 @@ import Checkout from "./pages/Checkout";
 import Orders from "./pages/Orders";
 import ChatWidget from "./components/ChatWidget";
 import Admin from "./pages/Admin";
+
 import "./App.css";
 
 export default function App() {
   return (
     <>
       <Header />
+
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -24,11 +26,13 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/checkout" element={<Checkout />} />
-         <Route path="/orders" element={<Orders />} />
-         <Route path="/admin" element={<Admin />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/admin" element={<Admin />} />
         </Routes>
       </main>
+
       <Footer />
+
       <ChatWidget />
     </>
   );
